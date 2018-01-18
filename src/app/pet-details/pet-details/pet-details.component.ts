@@ -26,8 +26,7 @@ export class PetDetailsComponent implements OnInit {
     .then(
       pet => this.pet = pet,
       error => {
-        // this.userService.removePetFromFavourites(petId);
-        console.log(JSON.stringify(error));
+        this.userService.removePetFromFavourites(petId);
         alert(`pet ${petId} already found a happy home 🤗`);
     });
   }
