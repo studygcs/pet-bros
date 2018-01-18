@@ -8,7 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 // app
 import { AppComponent } from './app.component';
 import { Config } from './common/index';
-import { SHARED_MODULES, COMPONENT_DECLARATIONS } from './app.common';
+import { SHARED_MODULES, COMPONENT_DECLARATIONS, PROVIDERS } from './app.common';
 
 import { UserService } from './user.service';
 import { NavigationService } from './navigation.service';
@@ -38,10 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
     ...SHARED_MODULES,
   ],
   providers: [
-    UserService,
-    NavigationService,
-    { provide: API_KEY_TOKEN, useValue: '3b3fe2619dfd3c4e94c2d7efd24592e1' },
-    PetFinderService
+    ...PROVIDERS
   ]
 })
 export class AppModule {}

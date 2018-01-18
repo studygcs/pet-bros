@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 // app
 import { MenuItem } from '../../interfaces/MenuItem';
 import { UserService } from '../../../user.service';
+import { NavigationService } from 'app/navigation.service';
 
 @Component({
   moduleId: module.id,
@@ -14,9 +15,10 @@ export class MenuComponent {
 
   public user$ = this.userService.user$;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private navigation: NavigationService) { }
 
   logout() {
     this.userService.logout();
+    this.navigation.navigate(['/login']);
   }
 }
