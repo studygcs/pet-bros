@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import firebase = require('nativescript-plugin-firebase');
 import { FBData } from 'nativescript-plugin-firebase';
+import 'rxjs/add/operator/share';
 
 export class FirebaseList<T> {
   private items: Map<string, T>;
