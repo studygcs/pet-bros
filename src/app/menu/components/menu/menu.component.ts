@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 // app
 import { MenuItem } from '../../interfaces/MenuItem';
 import { UserService } from '../../../user.service';
-import { NavigationService } from 'app/navigation.service';
+import { NavigationService } from '../../../navigation.service';
 
 @Component({
   moduleId: module.id,
