@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PetFinderService, Shelter } from 'petfinder-angular-service';
+import { PetFinderService } from 'petfinder-angular-service';
+import { Shelter } from 'petfinder-angular-service/models';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

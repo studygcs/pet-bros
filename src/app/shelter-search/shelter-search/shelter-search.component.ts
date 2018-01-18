@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../../navigation.service';
-import { PetFinderService, AvailableValues } from 'petfinder-angular-service';
+import { PetFinderService } from 'petfinder-angular-service';
+import { AvailableValues } from 'petfinder-angular-service/models';
 import { KeyLabel } from '../../models/key-label';
 
 @Component({

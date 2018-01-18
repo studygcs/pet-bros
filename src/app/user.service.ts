@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/switchMap';
 
 import { PetBasic } from './models';
-import { Pet, Shelter } from 'petfinder-angular-service';
+import { Pet, Shelter } from 'petfinder-angular-service/models';
 import { FirebaseList } from './firebase/firebase-list';
 import { assets } from './common/utils/defaults';
 

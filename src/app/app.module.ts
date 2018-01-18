@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Http, HttpModule } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 // vendor dependencies
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -10,12 +11,13 @@ import { Config } from './common/index';
 import { SHARED_MODULES, COMPONENT_DECLARATIONS } from './app.common';
 
 import { UserService } from './user.service';
-import { NavigationService } from 'app/navigation.service';
+import { NavigationService } from './navigation.service';
+import { PetFinderService, API_KEY_TOKEN } from 'petfinder-angular-service';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
-export function createTranslateLoader(http: Http) {
-    return new TranslateHttpLoader(<any>http, './assets/i18n/', '.json');
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(<any>http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -25,19 +27,21 @@ export function createTranslateLoader(http: Http) {
   ],
   imports: [
     BrowserAnimationsModule,
-    HttpModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [Http]
+        deps: [HttpClient]
       }
     }),
     ...SHARED_MODULES,
   ],
   providers: [
     UserService,
-    NavigationService
+    NavigationService,
+    { provide: API_KEY_TOKEN, useValue: '3b3fe2619dfd3c4e94c2d7efd24592e1' },
+    PetFinderService
   ]
 })
 export class AppModule {}

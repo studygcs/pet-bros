@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Shelter } from 'petfinder-angular-service';
+import { Shelter } from 'petfinder-angular-service/models';
 import { UserService } from '../../user.service';
 
 @Component({

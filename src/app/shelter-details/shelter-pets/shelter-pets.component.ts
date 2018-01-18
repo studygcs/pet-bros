@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PetFinderService, Pet } from 'petfinder-angular-service';
+import { PetFinderService } from 'petfinder-angular-service';
+import { Pet } from 'petfinder-angular-service/models';
 
 @Component({
   moduleId: module.id,

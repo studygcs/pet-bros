@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Pet } from 'petfinder-angular-service';
+import { Pet } from 'petfinder-angular-service/models';
 import { UserService } from '../../user.service';
 
 @Component({

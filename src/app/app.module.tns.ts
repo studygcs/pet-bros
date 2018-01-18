@@ -1,8 +1,8 @@
-import { NgModule, NO_ERRORS_SCHEMA, NgModuleFactoryLoader } from '@angular/core';
-import { Http } from '@angular/http';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 // nativescript
 import { NSModuleFactoryLoader } from 'nativescript-angular/router';
-import { NativeScriptHttpModule } from 'nativescript-angular/http';
+import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 // vendor dependencies
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -14,10 +14,11 @@ import { SHARED_MODULES, COMPONENT_DECLARATIONS } from './app.common';
 
 import { UserService } from './user.service';
 import { NavigationService } from './navigation.service';
+import { PetFinderService, API_KEY_TOKEN } from 'petfinder-angular-service';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 
-export function createTranslateLoader(http: Http) {
+export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(<any>http, '/assets/i18n/', '.json');
 }
 
@@ -27,12 +28,12 @@ export function createTranslateLoader(http: Http) {
   ],
   imports: [
     NativeScriptModule,
-    NativeScriptHttpModule,
+    NativeScriptHttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [Http]
+        deps: [HttpClient]
       }
     }),
     ...SHARED_MODULES
@@ -41,10 +42,10 @@ export function createTranslateLoader(http: Http) {
     ...COMPONENT_DECLARATIONS
   ],
   providers: [
-    // Allows your {N} application to use lazy-loading
-    { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader },
     UserService,
-    NavigationService
+    NavigationService,
+    { provide: API_KEY_TOKEN, useValue: '3b3fe2619dfd3c4e94c2d7efd24592e1' },
+    PetFinderService
   ],
   schemas: [
     NO_ERRORS_SCHEMA

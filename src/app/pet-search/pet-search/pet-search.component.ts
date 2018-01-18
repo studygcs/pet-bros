@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PetFinderService, Pet, PetSearchOptions, Options, AvailableValues } from 'petfinder-angular-service';
+import { PetFinderService } from 'petfinder-angular-service';
+import { Pet, PetSearchOptions, Options, AvailableValues } from 'petfinder-angular-service/models';
 import { UserService } from '../../user.service';
 import { NavigationService } from '../../navigation.service';
 import { KeyLabel } from '../../models/key-label';
@@ -30,7 +31,6 @@ export class PetSearchComponent implements OnInit {
   constructor(
     private navigation: NavigationService,
     private petfinderService: PetFinderService) { }
-
 
   ngOnInit(): void {
     this.animals = KeyLabel.mapAvailableValues(AvailableValues.animal, 'Any Animal');

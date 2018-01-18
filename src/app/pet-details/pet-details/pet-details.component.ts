@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PetFinderService, Pet } from 'petfinder-angular-service';
+import { PetFinderService } from 'petfinder-angular-service';
+import { Pet } from 'petfinder-angular-service/models';
 import { UserService } from '../../user.service';
 
 @Component({
@@ -22,7 +23,13 @@ export class PetDetailsComponent implements OnInit {
     const petId = this.route.snapshot.params['petId'];
 
     this.petFinderService.getPet(petId)
-    .then(pet => this.pet = pet);
+    .then(
+      pet => this.pet = pet,
+      error => {
+        // this.userService.removePetFromFavourites(petId);
+        console.log(JSON.stringify(error));
+        alert(`pet ${petId} already found a happy home 🤗`);
+    });
   }
 
   addToFavourites() {
